@@ -24,6 +24,11 @@ data/ham10000/HAM10000_metadata.csv
 ```
 Build split CSV:
 ```bash
+python download_dataset.py
+```
+
+Build split CSV:
+```bash
 python scripts/build_ham10000_csv.py --data_root data/ham10000   --out_csv data/ham10000/labels.csv --val_frac 0.15 --seed 42
 ```
 
