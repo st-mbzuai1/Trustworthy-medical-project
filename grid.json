@@ -1,0 +1,24 @@
+
+{
+  "csv": "data/ham10000/labels.csv",
+  "eps_list": [1, 2, 4, 8],
+  "pgd_steps": 10,
+  "out_root": "outputs/eval_grid",
+  "jobs": [
+    {"name":"clean_resnet50",        "arch":"resnet50",        "ckpt":"outputs/clean_resnet50/best.pt",        "dae":"None",                        "img_size":256},
+    {"name":"adv_resnet50",          "arch":"resnet50",        "ckpt":"outputs/adv_resnet50/best.pt",          "dae":"None",                        "img_size":256},
+    {"name":"adv_resnet50_plus_dae", "arch":"resnet50",        "ckpt":"outputs/adv_resnet50/best.pt",          "dae":"outputs/dae_unet/best.pt",    "img_size":256},
+
+    {"name":"clean_densenet121",     "arch":"densenet121",     "ckpt":"outputs/clean_densenet121/best.pt",     "dae":"None",                        "img_size":256},
+    {"name":"adv_densenet121",       "arch":"densenet121",     "ckpt":"outputs/adv_densenet121/best.pt",       "dae":"None",                        "img_size":256},
+    {"name":"adv_densenet121_dae",   "arch":"densenet121",     "ckpt":"outputs/adv_densenet121/best.pt",       "dae":"outputs/dae_unet/best.pt",    "img_size":256},
+
+    {"name":"clean_efficientnet_b0", "arch":"efficientnet_b0", "ckpt":"outputs/clean_efficientnet_b0/best.pt", "dae":"None",                        "img_size":256},
+    {"name":"adv_efficientnet_b0",   "arch":"efficientnet_b0", "ckpt":"outputs/adv_efficientnet_b0/best.pt",   "dae":"None",                        "img_size":256},
+    {"name":"adv_effb0_dae",         "arch":"efficientnet_b0", "ckpt":"outputs/adv_efficientnet_b0/best.pt",   "dae":"outputs/dae_unet/best.pt",    "img_size":256},
+
+    {"name":"clean_dino",            "arch":"dino",            "ckpt":"outputs/clean_dino/best.pt",            "dae":"None",                        "img_size":224},
+    {"name":"adv_dino",              "arch":"dino",            "ckpt":"outputs/adv_dino/best.pt",              "dae":"None",                        "img_size":224},
+    {"name":"adv_dino_dae",          "arch":"dino",            "ckpt":"outputs/adv_dino/best.pt",              "dae":"outputs/dae_unet/best.pt",    "img_size":224}
+  ]
+}
