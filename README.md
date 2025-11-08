@@ -4,10 +4,8 @@
 **What you get**
 - Models: **ResNet50**, **DenseNet121**, **EfficientNet-B0**, **DINO ViT-B/16** (`--arch` flag)
 - Defenses: **PGD Adversarial Training**, **Denoising Autoencoder (U-Net)**
-- Attacks: **FGSM**, **PGD**, **DeepFool**, **Adversarial Patch**
-- Metrics: Accuracy, Macro-AUROC, Macro-AUPRC, Sens@Spec=0.95, ECE
-- Extras: **Calibration** (temperature scaling + reliability), **Common Corruptions**, **Selective Risk–Coverage**, **OOD via energy score**
-- Orchestration: **Grid config** to evaluate *everything* and aggregate into CSV + LaTeX/Markdown tables + plots
+- Attacks: **FGSM**, **PGD**, **DeepFool**,
+
 
 ## 0) Environment
 ```bash
