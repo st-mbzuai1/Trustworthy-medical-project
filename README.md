@@ -72,7 +72,7 @@ python make_tables.py --summary outputs/eval_grid/summary.csv --out_dir outputs/
 python more_plots.py --summary outputs/eval_grid/summary.csv --out_dir outputs/eval_grid/plots
 ```
 
-## 3) other attack types experiments
+## 3) other attack types experiments(gaussian noise, salt pepper)
 train:
 ```bash
 python train_dae.py --csv data /ham10000/labels.csv --img_size 256 --epochs 10 --out_dir outputs/dae_unet
