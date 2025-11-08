@@ -97,5 +97,4 @@ python eval_dae_cls.py \
    --out_dir outputs/dae_unet_changed/eval_cls_resnet50
 ```
 
-```
 
