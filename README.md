@@ -72,6 +72,17 @@ python make_tables.py --summary outputs/eval_grid/summary.csv --out_dir outputs/
 python more_plots.py --summary outputs/eval_grid/summary.csv --out_dir outputs/eval_grid/plots
 ```
 
+## 3) other attack types experiments
+train:
+```bash
+python train_dae.py --csv data /ham10000/labels.csv --img_size 256 --epochs 10 --out_dir outputs/dae_unet
+```
+
+ eval:
+```bash
+python eval_attacks.py --arch resnet50 --csv data/ham10000/labels.csv --img_size 256   --ckpt outputs/clean_resnet50/best.pt --dae_ckpt outputs/dae_unet   --eps_list 1 2 4 8 --pgd_steps 10 --out_dir outputs/eval_clean_resnet50
+```
+
 ## 6) Extra trustworthy evals
 **Calibration + reliability:**
 ```bash
