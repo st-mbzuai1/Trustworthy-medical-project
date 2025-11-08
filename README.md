@@ -72,7 +72,7 @@ python make_tables.py --summary outputs/eval_grid/summary.csv --out_dir outputs/
 python more_plots.py --summary outputs/eval_grid/summary.csv --out_dir outputs/eval_grid/plots
 ```
 
-## 3) other attack types experiments(gaussian noise, salt pepper)
+## 6) other attack types experiments(gaussian noise, salt pepper)
 train:
 ```bash
 python train_dae.py --csv data /ham10000/labels.csv --img_size 256 --epochs 10 --out_dir outputs/dae_unet
@@ -99,27 +99,6 @@ python eval_dae_cls.py \
    --out_dir outputs/dae_unet_changed/eval_cls_resnet50
 ```
 
-## 6) Extra trustworthy evals
-**Calibration + reliability:**
-```bash
-python calibration.py --arch resnet50 --csv data/ham10000/labels.csv --img_size 256   --ckpt outputs/clean_resnet50/best.pt --out_dir outputs/calib_resnet50
-```
-**Common corruptions sweep:**
-```bash
-python eval_corruptions.py --arch resnet50 --csv data/ham10000/labels.csv --img_size 256   --ckpt outputs/clean_resnet50/best.pt --out_dir outputs/corruptions_resnet50
-```
-**Selective risk–coverage:**
-```bash
-python selective_risk_coverage.py --arch resnet50 --csv data/ham10000/labels.csv --img_size 256   --ckpt outputs/clean_resnet50/best.pt --out_dir outputs/rc_resnet50
-```
-**OOD (energy score) — needs an OOD folder:**
-```bash
-python eval_ood.py --arch resnet50 --csv data/ham10000/labels.csv --img_size 256   --ckpt outputs/clean_resnet50/best.pt --ood_dir data/ood_images --out_dir outputs/ood_resnet50
-```
-
-## 7) Plots (from attack eval)
-```bash
-python plots.py --eval_dirs outputs/eval_clean_resnet50 outputs/eval_adv_resnet50_plus_dae   --out_dir outputs/plots
 ```
 
 Notes:
