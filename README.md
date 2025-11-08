@@ -101,6 +101,3 @@ python eval_dae_cls.py \
 
 ```
 
-Notes:
-- ε is in **/255** units.
-- Attack evaluation is **adaptive through the DAE** where applicable.
