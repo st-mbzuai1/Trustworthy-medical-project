@@ -22,7 +22,7 @@ data/ham10000/HAM10000_images_part_1/*.jpg
 data/ham10000/HAM10000_images_part_2/*.jpg
 data/ham10000/HAM10000_metadata.csv
 ```
-Build split CSV:
+Download data:
 ```bash
 python download_dataset.py
 ```
