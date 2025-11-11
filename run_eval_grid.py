@@ -9,7 +9,7 @@ def main(args):
         name, arch, ckpt = job['name'], job['arch'], job['ckpt']
         dae  = job.get('dae', 'None'); img_size = job.get('img_size', 256); batch = job.get('batch_size', 32)
         out_dir = os.path.join(out_root, name); os.makedirs(out_dir, exist_ok=True)
-        cmd = f"python eval_attacks.py --arch {arch} --csv {csv} --img_size {img_size} --batch_size {batch} --ckpt {ckpt} --dae_ckpt {dae} --eps_list {' '.join(map(str, eps_list))} --pgd_steps {pgd_steps} --out_dir {out_dir}"
+        cmd = f"python scripts/eval_attacks.py --arch {arch} --csv {csv} --img_size {img_size} --batch_size {batch} --ckpt {ckpt} --dae_ckpt {dae} --eps_list {' '.join(map(str, eps_list))} --pgd_steps {pgd_steps} --out_dir {out_dir}"
         print('\n[RUN]', cmd); subprocess.run(shlex.split(cmd), check=True)
 if __name__ == "__main__":
     ap = argparse.ArgumentParser(); ap.add_argument('--config', required=True); args = ap.parse_args(); main(args)
