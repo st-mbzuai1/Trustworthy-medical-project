@@ -75,7 +75,7 @@ python more_plots.py --summary outputs/eval_grid/summary.csv --out_dir outputs/e
 ## 6) other attack types experiments(gaussian noise, salt pepper)
 train:
 ```bash
-python train_dae_2.py --csv data /ham10000/labels.csv --img_size 256 --epochs 10 --out_dir outputs/dae_unet_2
+python train_dae_2.py --csv data/ham10000/labels.csv --img_size 256 --epochs 10 --out_dir outputs/dae_unet_2
 ```
 
  eval:
