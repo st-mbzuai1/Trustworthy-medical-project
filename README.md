@@ -73,7 +73,7 @@ python more_plots.py --summary outputs/eval_grid/summary.csv --out_dir outputs/e
 ## 6) other attack types experiments(gaussian noise, salt pepper)
 train:
 ```bash
-python train_dae.py --csv data /ham10000/labels.csv --img_size 256 --epochs 10 --out_dir outputs/dae_unet
+python train_dae_2.py --csv data /ham10000/labels.csv --img_size 256 --epochs 10 --out_dir outputs/dae_unet_2
 ```
 
  eval:
@@ -90,11 +90,12 @@ python eval_dae_cls.py \
 
    --ckpt outputs/clean_resnet50/best.pt \
 
-   --dae_ckpt outputs/dae_unet/best.pt \
+   --dae_ckpt outputs/dae_unet_2/best.pt \
 
    --base 32 --groups 8 \
 
    --out_dir outputs/dae_unet_changed/eval_cls_resnet50
 ```
+
 
 
