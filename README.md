@@ -90,23 +90,7 @@ python train_dae_2.py --csv data/ham10000/labels.csv --img_size 256 --epochs 10 
 
  eval:
 ```bash
-python eval_dae_cls.py \
-
-   --csv data/ham10000/labels.csv \
-
-   --img_size 256 \
-
-   --batch_size 32 \
-
-   --arch resnet50 \
-
-   --ckpt outputs/clean_resnet50/best.pt \
-
-   --dae_ckpt outputs/dae_unet_2/best.pt \
-
-   --base 32 --groups 8 \
-
-   --out_dir outputs/dae_unet_changed/eval_cls_resnet50
+python eval_dae_cls.py --csv data/ham10000/labels.csv --img_size 256 --batch_size 32 --arch efficientnet_b0 --ckpt outputs/clean_efficientnet_b0/best.pt --dae_ckpt outputs/dae_unet_2/best.pt --base 32 --groups 8 --out_dir outputs/dae_unet_changed/eval_cls_efficientnet_b0
 ```
 
 
