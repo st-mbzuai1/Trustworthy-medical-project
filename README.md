@@ -98,8 +98,7 @@ python eval_dae_cls.py --csv data/ham10000_data/labels.csv --img_size 256 --batc
 below two run well 
 
 ```bash
-python train_all_and_dae.py   --csv data/ham1000
-0_data/labels.csv   --img_size 256   --batch_size 32   --epochs 5   --dae_epochs 10
+python train_all_and_dae.py   --csv data/ham10000_data/labels.csv   --img_size 256   --batch_size 32   --epochs 30   --dae_epochs 10
 ```
 
 ```bash
