@@ -95,6 +95,16 @@ python train_dae_2.py --csv data/ham10000_data/labels.csv --img_size 256 --epoch
 python eval_dae_cls.py --csv data/ham10000_data/labels.csv --img_size 256 --batch_size 32 --arch efficientnet_b0 --ckpt outputs/clean_efficientnet_b0/best.pt --dae_ckpt outputs/dae_unet_2/best.pt --base 32 --groups 8 --out_dir outputs/dae_unet_changed/eval_cls_efficientnet_b0
 ```
 
+below two run well 
+
+```bash
+python train_all_and_dae.py   --csv data/ham1000
+0_data/labels.csv   --img_size 256   --batch_size 32   --epochs 5   --dae_epochs 10
+```
+
+```bash
+python eval_all_with_dae.py   --csv data/ham10000_data/labels.csv   --img_size 256   --batch_size 32
+```
 
 
 
