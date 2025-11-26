@@ -116,17 +116,17 @@ The predictions will be saved to answers_file.jsonl given below (using the fixed
 git clone https://github.com/microsoft/LLaVA-Med.git
 cd LLaVA-Med
 python llava/eval/model_vqa.py --conv-mode mistral_instruct --model-path microsoft/llava-med-v1.5-mistral-7b --question-file Ham10000_json/HAM10000/ham10000_vqa_val.jsonl --image-folder path_to_clean_Ham10000 --answers-file /path_to_answers_file.jsonl --temperature 0.0
+```
 
 3.  This is for Zero-shot LLaVA-Med VQA on HAM10000 under attacked: 
 
 we need generated the attacked sample from clean Ham10000 here: Ham10000_json/HAM10000/generate_ham10000_fgsm.py
-
 ```
-
 git clone https://github.com/microsoft/LLaVA-Med.git
 cd LLaVA-Med
 python llava/eval/model_vqa.py --conv-mode mistral_instruct --model-path microsoft/llava-med-v1.5-mistral-7b --question-file Ham10000_json/HAM10000/ham10000_vqa_val.jsonl --image-folder path_to_attacked_sample_Ham10000 --answers-file /path_to_answers_file_attacked.jsonl --temperature 0.0
 ```
+
 We get score metrics using the below script(in the repo root)
 ```
 python eval_vqa_ham10000_accuracy.py --gt Ham10000_json/HAM10000/ham10000_vqa_val.jsonl --pr /path_to_answers_file.jsonl --out ./eval_ham1000_vqa_Acc.jsonl
