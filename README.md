@@ -6,6 +6,7 @@
 - Defenses: **PGD Adversarial Training**, **Denoising Autoencoder (U-Net)**
 - Attacks: **FGSM**, **PGD**, **DeepFool**,
 
+### Outputs can be found here : https://drive.google.com/file/d/1arK0F118Ol5IS5e9_iosP8pJ0exBYKM4/view?usp=sharing
 
 
 ## 0) Environment
@@ -102,6 +103,77 @@ python train_all_and_dae.py   --csv data/ham10000_data/labels.csv   --img_size 2
 
 ```bash
 python eval_all_with_dae.py   --csv data/ham10000_data/labels.csv   --img_size 256   --batch_size 32
+```
+
+
+## Reformulate the classification as closed-ended VQA and evaluate the performance of the pre-trained LLaVA-Med.
+
+We will work in the LLaVA-Med official repo for this(inference). 
+
+The json format for vqa question answering for Ham10000 dataset with LLava-Med: LLaVA-med-finetuning/Ham10000_json
+
+The predictions will be saved to answers_file.jsonl given below (using the fixed test file)
+
+1. This is for Zero-shot LLaVA-Med VQA on HAM10000 for clean: 
+git clone https://github.com/microsoft/LLaVA-Med.git
+cd LLaVA-Med
+python llava/eval/model_vqa.py --conv-mode mistral_instruct --model-path microsoft/llava-med-v1.5-mistral-7b --question-file Ham10000_json/HAM10000/ham10000_vqa_val.jsonl --image-folder path_to_clean_Ham10000 --answers-file /path_to_answers_file.jsonl --temperature 0.0
+```
+2.  This is for Zero-shot LLaVA-Med VQA on HAM10000 under attacked: 
+
+we need generated the attacked sample from clean Ham10000 here: Ham10000_json/HAM10000/generate_ham10000_fgsm.py
+
+git clone https://github.com/microsoft/LLaVA-Med.git
+cd LLaVA-Med
+python llava/eval/model_vqa.py --conv-mode mistral_instruct --model-path microsoft/llava-med-v1.5-mistral-7b --question-file Ham10000_json/HAM10000/ham10000_vqa_val.jsonl --image-folder path_to_attacked_sample_Ham10000 --answers-file /path_to_answers_file_attacked.jsonl --temperature 0.0
+```
+We get score metrics using the below script(in the repo root)
+```
+python eval_vqa_ham10000_accuracy.py --gt Ham10000_json/HAM10000/ham10000_vqa_val.jsonl --pr /path_to_answers_file.jsonl --out ./eval_ham1000_vqa_Acc.jsonl
+
+python eval_vqa_ham10000_accuracy.py --gt Ham10000_json/HAM10000/ham10000_vqa_val.jsonl --pr /path_to_answers_file_attacked.jsonl --out ./eval_ham1000_vqa_Acc_attacked.jsonl
+
+```
+
+## Step - 4 - Fine-tune VLM: Fine-tune LLaVA-Med for improved performance(using LORA) (it is done on the whole training split)
+Note that for this step it is best to build a new environment using conda or pip from the LLaVA-med-finetuning folder. 
+This is the modified LLaVA(fixed) repo to do the finetuning (refer to [here for relevant issue](https://github.com/microsoft/LLaVA-Med/issues/87)) and this [click](https://github.com/haotian-liu/LLaVA/issues/1423#issuecomment-2068356012)
+
+⚠️ **Important:** In train.sh modify the --data_path, --image_folder and --output_dir . The datapath is the questions file which was already made during the preprocessing step. The relevant checkpoints will be saved based on what --output_dir is set. 
+
+⚠️ **Important:** Also make sure that the model-path is set to microsoft/llava-med-v1.5-mistral-7b.
+
+⚠️ **Important:** Also make sure the output dir has the word "llava" and "lora" in it. Check out this github issue - [click](https://github.com/haotian-liu/LLaVA/issues/1567). For safety you can have the name as /path/llava-lora-XXX
+
+⚠️ **Important:** We need generated the LLava-vqa trainning format for Ham10000. Please find code here: Ham10000_json/HAM10000/convert_to_llava_train.py
+
+
+```
+cd LLaVA-med-finetuning
+```
+```
+bash train.sh 
+```
+
+⚠️ **Very Important:** After training, we need to merge the checkpoints of lora with the base model. [check this](https://github.com/microsoft/LLaVA-Med/issues/87#issuecomment-2293292356)
+
+Note that --model-path should be the path to one of the saved checkpoint which was obtained during the previous step (eg. llava-lora_ckpts_finetune/checkpoint-2400).
+
+
+--save-model-path is where the merged weights will be saved.
+```
+python merge_lora_weights.py --model-path /path_to_saved_checkpoint_based_on_output_dir --model-base microsoft/llava-med-v1.5-mistral-7b --save-model-path /path_to_merged_checkpoint
+```
+
+
+We do inference using the merged checkpoints using the following script(Note - this has to be done from the llava-med repo). The predictions will be saved to answers_file.jsonl given below
+```
+python llava/eval/model_vqa.py --conv-mode mistral_instruct --model-path microsoft/llava-med-v1.5-mistral-7b --question-file Ham10000_json/HAM10000/ham10000_vqa_val.jsonl --image-folder path_to_clean_Ham10000 --answers-file /path_to_answers_file.jsonl --temperature 0.0
+```
+
+We get score metrics using the below script(from the repo root)
+```
+python eval_vqa_ham10000_accuracy.py --gt Ham10000_json/HAM10000/ham10000_vqa_val.jsonl --pr /path_to_answers_file.jsonl --out ./eval_ham1000_vqa_Acc.jsonl
 ```
 
 
