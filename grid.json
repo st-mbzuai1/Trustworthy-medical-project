@@ -1,6 +1,6 @@
 
 {
-  "csv": "data/ham10000/labels.csv",
+  "csv": "data/ham10000_data/labels.csv",
   "eps_list": [1, 2, 4, 8],
   "pgd_steps": 10,
   "out_root": "outputs/eval_grid",
