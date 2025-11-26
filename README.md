@@ -67,8 +67,6 @@ Edit `grid.json` (already populated) and run:
 ```bash
 python run_eval_grid.py --config grid.json
 python aggregate_summary.py --eval_root outputs/eval_grid --out_csv outputs/eval_grid/summary.csv
-python make_tables.py --summary outputs/eval_grid/summary.csv --out_dir outputs/eval_grid/tables
-python more_plots.py --summary outputs/eval_grid/summary.csv --out_dir outputs/eval_grid/plots
 ```
 
 ## 6) other attack types experiments(gaussian noise, salt pepper)
