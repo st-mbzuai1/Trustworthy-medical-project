@@ -68,6 +68,7 @@ python aggregate_summary.py --eval_root outputs/eval_grid --out_csv outputs/eval
 ## 6) other attack types experiments(gaussian noise, salt pepper)
 
 ```bash
+cp -r data experiments-2/
 cd experiments-2
 ```
 
