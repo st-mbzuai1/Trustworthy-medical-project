@@ -57,10 +57,6 @@ Example:
 python eval_attacks.py --arch resnet50 --csv data/ham10000_data/labels.csv --img_size 256   --ckpt outputs/clean_resnet50/best.pt --dae_ckpt None   --eps_list 1 2 4 8 --pgd_steps 10 --out_dir outputs/eval_clean_resnet50
 ```
 
-## 4) Visualize Attacks
-```bash
-python visualize_attacks.py --arch resnet50 --csv data/ham10000_data/labels.csv   --img_size 256 --ckpt outputs/clean_resnet50/best.pt --dae_ckpt None   --num_samples 12 --eps 4 --pgd_steps 10 --out_dir outputs/viz_resnet50
-```
 
 ## 5) Comprehensive Grid (all models + defenses + DAE)
 Edit `grid.json` (already populated) and run:
