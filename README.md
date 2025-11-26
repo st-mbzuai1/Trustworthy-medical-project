@@ -6,7 +6,6 @@
 - Defenses: **PGD Adversarial Training**, **Denoising Autoencoder (U-Net)**
 - Attacks: **FGSM**, **PGD**, **DeepFool**,
 
-### Outputs can be found here : https://drive.google.com/file/d/1arK0F118Ol5IS5e9_iosP8pJ0exBYKM4/view?usp=sharing
 
 
 ## 0) Environment
