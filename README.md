@@ -8,16 +8,16 @@
 
 ## 0) Environment
 ```bash
-conda create -n hamrob python=3.10 -y
-conda activate hamrob
+conda create -n trustworthy python=3.10 -y
+conda activate trustworthy
 pip install -r requirements.txt
 ```
 
 ## 1) Data
 ```
-data/ham10000/HAM10000_images_part_1/*.jpg
-data/ham10000/HAM10000_images_part_2/*.jpg
-data/ham10000/HAM10000_metadata.csv
+data/ham10000_data/HAM10000_images_part_1/*.jpg
+data/ham10000_data/HAM10000_images_part_2/*.jpg
+data/ham10000_data/HAM10000_metadata.csv
 ```
 Download data:
 ```bash
