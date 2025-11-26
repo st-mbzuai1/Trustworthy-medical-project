@@ -1,0 +1,36 @@
+Condition,Class,Description,Support,Correct,Accuracy
+Clean,A,akiec — Actinic keratoses / IEC (Bowen’s),49,0,0.0
+Clean,B,bcc — Basal cell carcinoma,77,0,0.0
+Clean,C,"bkl — Benign keratosis-like (SK, lentigo, LPLK)",165,75,0.45454545454545453
+Clean,D,df — Dermatofibroma,17,0,0.0
+Clean,E,mel — Melanoma,167,0,0.0
+Clean,F,nv — Melanocytic nevi,1006,971,0.9652087475149106
+Clean,G,vasc — Vascular lesions,21,0,0.0
+FGSM ε=8,A,akiec — Actinic keratoses / IEC (Bowen’s),49,0,0.0
+FGSM ε=8,B,bcc — Basal cell carcinoma,77,0,0.0
+FGSM ε=8,C,"bkl — Benign keratosis-like (SK, lentigo, LPLK)",165,9,0.05454545454545454
+FGSM ε=8,D,df — Dermatofibroma,17,0,0.0
+FGSM ε=8,E,mel — Melanoma,167,0,0.0
+FGSM ε=8,F,nv — Melanocytic nevi,1006,1002,0.9960238568588469
+FGSM ε=8,G,vasc — Vascular lesions,21,0,0.0
+FGSM ε=16,A,akiec — Actinic keratoses / IEC (Bowen’s),49,0,0.0
+FGSM ε=16,B,bcc — Basal cell carcinoma,77,0,0.0
+FGSM ε=16,C,"bkl — Benign keratosis-like (SK, lentigo, LPLK)",165,29,0.17575757575757575
+FGSM ε=16,D,df — Dermatofibroma,17,0,0.0
+FGSM ε=16,E,mel — Melanoma,167,0,0.0
+FGSM ε=16,F,nv — Melanocytic nevi,1006,990,0.9840954274353877
+FGSM ε=16,G,vasc — Vascular lesions,21,0,0.0
+FGSM ε=8 (denoised),A,akiec — Actinic keratoses / IEC (Bowen’s),49,0,0.0
+FGSM ε=8 (denoised),B,bcc — Basal cell carcinoma,77,0,0.0
+FGSM ε=8 (denoised),C,"bkl — Benign keratosis-like (SK, lentigo, LPLK)",165,10,0.06060606060606061
+FGSM ε=8 (denoised),D,df — Dermatofibroma,17,0,0.0
+FGSM ε=8 (denoised),E,mel — Melanoma,167,0,0.0
+FGSM ε=8 (denoised),F,nv — Melanocytic nevi,1006,1004,0.9980119284294234
+FGSM ε=8 (denoised),G,vasc — Vascular lesions,21,0,0.0
+FGSM ε=16 (denoised),A,akiec — Actinic keratoses / IEC (Bowen’s),49,0,0.0
+FGSM ε=16 (denoised),B,bcc — Basal cell carcinoma,77,0,0.0
+FGSM ε=16 (denoised),C,"bkl — Benign keratosis-like (SK, lentigo, LPLK)",165,15,0.09090909090909091
+FGSM ε=16 (denoised),D,df — Dermatofibroma,17,0,0.0
+FGSM ε=16 (denoised),E,mel — Melanoma,167,0,0.0
+FGSM ε=16 (denoised),F,nv — Melanocytic nevi,1006,1003,0.9970178926441352
+FGSM ε=16 (denoised),G,vasc — Vascular lesions,21,0,0.0

@@ -1,0 +1,17 @@
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{lrrrr}
+\toprule
+Condition & Total & Correct & Accuracy & $\Delta$ vs.\ Clean \\
+\midrule
+Clean & 1502 & 1046 & 0.696 & +0.000 \\
+FGSM ε=8 & 1502 & 1011 & 0.673 & -0.023 \\
+FGSM ε=16 & 1502 & 1019 & 0.678 & -0.018 \\
+FGSM ε=8 (denoised) & 1502 & 1014 & 0.675 & -0.021 \\
+FGSM ε=16 (denoised) & 1502 & 1018 & 0.678 & -0.019 \\
+\bottomrule
+\end{tabular}
+\caption{\textbf{Overall accuracy across conditions} for LLaVA-Med (LoRA fine-tuned) on HAM10000. $\Delta$ is the accuracy change vs. Clean.}
+\label{tab:ham_overall}
+\end{table}
